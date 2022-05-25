@@ -6,10 +6,34 @@ Since running a gezel code is a little tricky, I decided to guide you for the in
 # OS
 As our sources are .deb this should work for every debian based linux
 by the way I used <a href=https://releases.ubuntu.com/22.04/>ubuntu Jammy Jellyfish</a>
-and it worked pretty well.
+and everything went pretty well.
 
 # Installtion process
-clone this repository
+1. clone this repository
 ```
-    git
+    git clone https://github.com/Mehrdadghassabi/Gezel_how_to_install.git
+```
+2. change the directory to Sources folder
+
+```
+    cd Gezel_how_to_install/Sources/
+```
+3. change the install.sh modification
+
+```
+    chmod +x install.sh
+```
+4. run the shell code
+```
+    sudo ./install.sh
+```
+5. change your bin path
+```
+    export PATH=$:/opt/gezel/bin/
+```
+# run a code
+by running this code you should see Hello world four times
+if you did everythings done properly
+```
+    fdlsim Hello_World.fdl 4
 ```

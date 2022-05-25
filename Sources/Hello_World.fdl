@@ -1,0 +1,9 @@
+dp helloWorld(){
+   always {
+      $display("Hello World");
+   }
+}
+
+system S {
+   helloWorld;
+}

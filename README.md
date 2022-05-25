@@ -32,7 +32,8 @@ and everything went pretty well.
     export PATH=$:/opt/gezel/bin/
 ```
 # run a code
-by running this code you should see Hello world four times
+by running this code you should see Hello world four times.
+
 if you did everythings done properly
 ```
     fdlsim Hello_World.fdl 4

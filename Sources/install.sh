@@ -1,15 +1,18 @@
 #!/bin/sh
 
+apt upgrade
 apt update
 apt install -y libgmp-dev
 apt install lib32stdc++6
 
 apt install autoconf
-apt install autoconf
-apt install autoconf
-apt install autoconf
-apt install autoconf
-apt install autoconf
+apt install libtool
+apt install g++
+apt install bison
+apt install flex
+apt install texinfo
+# apt install libgmp3-dev
+apt install binutils-dev
 
 wget https://master.dl.sourceforge.net/project/gezel/gezel/2.5/gezel-sources-2.5.deb?viasf
 wget https://master.dl.sourceforge.net/project/gezel/gezel/2.5/gezel-simulavr-2.5.deb?viasf

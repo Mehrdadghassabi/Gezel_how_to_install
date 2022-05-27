@@ -55,7 +55,7 @@ cd Gezel_how_to_install/Sources/
 3. change the install.sh modification
 
 ```
-chmod +x install.sh
+chmod +x uninstall.sh
 ```
 4. run the shell code
 ```

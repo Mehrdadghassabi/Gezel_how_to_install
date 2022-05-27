@@ -13,30 +13,51 @@ and everything went pretty well.
 # Installtion process
 1. clone this repository
 ```
-    git clone https://github.com/Mehrdadghassabi/Gezel_how_to_install.git
+git clone https://github.com/Mehrdadghassabi/Gezel_how_to_install.git
 ```
 2. change the directory to Sources folder
 
 ```
-    cd Gezel_how_to_install/Sources/
+cd Gezel_how_to_install/Sources/
 ```
 3. change the install.sh modification
 
 ```
-    chmod +x install.sh
+chmod +x install.sh
 ```
 4. run the shell code
 ```
-    sudo ./install.sh
+sudo ./install.sh
 ```
 5. change your bin path
 ```
-    export PATH=$:/opt/gezel/bin/
+export PATH=$:/opt/gezel/bin/
 ```
 # run a code
 by running this code you should see Hello world four times.
 
 if you did everythings done properly
 ```
-    fdlsim Hello_World.fdl 4
+fdlsim Hello_World.fdl 4
+```
+# uninstallation process
+you dont need the first two step if you havent delete project folder
+
+1. clone this repository
+```
+git clone https://github.com/Mehrdadghassabi/Gezel_how_to_install.git
+```
+2. change the directory to Sources folder
+
+```
+cd Gezel_how_to_install/Sources/
+```
+3. change the install.sh modification
+
+```
+chmod +x install.sh
+```
+4. run the shell code
+```
+sudo ./uninstall.sh
 ```

@@ -1,0 +1,55 @@
+dp factoreal 
+{
+        reg a : tc(32);
+        reg b : tc(32);
+
+	always
+	{
+	
+	}
+
+	sfg init
+	{ 
+		a = 1; 
+		b = 5; 
+	}
+
+
+	sfg mul
+	{ 
+		a = a * b ;
+		b = b - 1 ;
+	}
+	
+	sfg lastop
+	{
+	a = a ;
+	b = b ;
+	}
+	
+	sfg printresult
+	{
+		$display($dec,"result = ", a);
+	}
+	
+
+}
+
+fsm fac(factoreal)
+{
+	initial s0;
+	state s1, s2 ;
+
+	@s0 init -> s1;
+
+	@s1 if(b == 0) then lastop -> s2;
+	else mul -> s1;
+
+	@s2 printresult -> s2;
+
+}
+
+system S 
+{
+	factoreal;
+}

@@ -17,7 +17,7 @@ git clone https://github.com/Mehrdadghassabi/an_introduction_to_gezel.git
 2. change the directory to Sources folder
 
 ```
-cd Gezel_how_to_install/Sources/
+cd an_introduction_to_gezel/Sources/
 ```
 3. change the install.sh modification
 
@@ -52,7 +52,7 @@ git clone https://github.com/Mehrdadghassabi/an_introduction_to_gezel.git
 2. change the directory to Sources folder
 
 ```
-cd Gezel_how_to_install/Sources/
+cd an_introduction_to_gezel/Sources/
 ```
 3. change the install.sh modification
 

@@ -12,7 +12,7 @@ and everything went pretty well.
 # Installtion process
 1. clone this repository
 ```
-git clone https://github.com/Mehrdadghassabi/Gezel_how_to_install.git
+git clone https://github.com/Mehrdadghassabi/an_introduction_to_gezel.git
 ```
 2. change the directory to Sources folder
 
@@ -47,7 +47,7 @@ you dont need the first two step if you havent delete project folder
 
 1. clone this repository
 ```
-git clone https://github.com/Mehrdadghassabi/Gezel_how_to_install.git
+git clone https://github.com/Mehrdadghassabi/an_introduction_to_gezel.git
 ```
 2. change the directory to Sources folder
 

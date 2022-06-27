@@ -12,12 +12,12 @@ and everything went pretty well.
 # Installtion process
 1. clone this repository
 ```
-git clone https://github.com/Mehrdadghassabi/an_introduction_to_gezel.git
+git clone https://github.com/Mehrdadghassabi/gezel_intro.git
 ```
 2. change the directory to Sources folder
 
 ```
-cd an_introduction_to_gezel/Sources/
+cd gezel_intro/Sources/
 ```
 3. change the install.sh modification
 
@@ -47,12 +47,12 @@ you dont need the first two step if you havent delete project folder
 
 1. clone this repository
 ```
-git clone https://github.com/Mehrdadghassabi/an_introduction_to_gezel.git
+git clone https://github.com/Mehrdadghassabi/gezel_intro.git
 ```
 2. change the directory to Sources folder
 
 ```
-cd an_introduction_to_gezel/Sources/
+cd gezel_intro/Sources/
 ```
 3. change the install.sh modification
 

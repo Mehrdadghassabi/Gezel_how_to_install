@@ -1,0 +1,33 @@
+dp halo (in data:ns(8))
+{
+  sig data1: ns(8);
+  always
+  {  
+     data1 = data * 3;
+     $display("hey there, you gave me: ", data, " and i gave you: ", data1);
+  }
+}
+
+ipblock my8051
+{
+  iptype "i8051system";
+  ipparm "exec = hello.ihx";
+  ipparm "verbose = 1";
+  ipparm "period = 1";
+}
+
+ipblock my8051_input (out data:ns(8))
+{
+  iptype "i8051systemsource";
+  ipparm "core =  my8051";
+  ipparm "port = P1";
+}
+
+dp sys
+{
+  sig data: ns(8);
+  use halo(data);
+  use my8051;
+  use my8051_input(data);
+}
+system S {sys;}

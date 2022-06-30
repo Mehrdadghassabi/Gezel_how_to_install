@@ -1,0 +1,954 @@
+ipblock my8051
+{
+  iptype "i8051system";
+  ipparm "exec = sort.ihx";
+  ipparm "verbose = 1";
+  ipparm "period = 1";
+}
+
+ipblock my8051_input (out data:ns(8))
+{
+  iptype "i8051systemsource";
+  ipparm "core =  my8051";
+  ipparm "port = P0";
+}
+
+ipblock mys8051_input (out data:ns(8))
+{
+  iptype "i8051systemsource";
+  ipparm "core =  my8051";
+  ipparm "port = P1";
+}
+
+ipblock master_out(out datao : ns(32)) 
+{
+	iptype "i8051systemsource";
+	ipparm "address=0x80000000";
+}
+
+ipblock master_outt(out dataoo : ns(32)) 
+{
+	iptype "i8051systemsource";
+	ipparm "address=0x80000000";
+}
+
+dp sys
+{
+
+  sig data: ns(8);
+  sig datas: ns(8);
+  sig datao: ns(32);
+  sig dataoo: ns(32);
+  
+  reg i : tc(10);
+  
+  reg hold0: ns(8);
+  reg hold1: ns(8);
+  reg hold2: ns(8);
+  reg hold3: ns(8);
+  reg hold4: ns(8);
+  reg hold5: ns(8);
+  reg hold6: ns(8);
+  reg hold7: ns(8);
+  
+  reg r0: ns(8);
+  reg r1: ns(8);
+  reg r2: ns(8);
+  reg r3: ns(8);
+  reg r4: ns(8);
+  reg r5: ns(8);
+  reg r6: ns(8);
+  reg r7: ns(8);
+  
+  reg huld0: ns(8);
+  reg huld1: ns(8);
+  reg huld2: ns(8);
+  reg huld3: ns(8);
+  reg huld4: ns(8);
+  reg huld5: ns(8);
+  reg huld6: ns(8);
+  reg huld7: ns(8);
+  
+  reg a0: ns(8);
+  reg a1: ns(8);
+  reg a2: ns(8);
+  reg a3: ns(8);
+  reg a4: ns(8);
+  reg a5: ns(8);
+  reg a6: ns(8);
+  reg a7: ns(8);
+		               
+  always
+  {  
+   
+  }
+  
+  sfg init
+  {
+  i = 1;
+  r0 = 4;
+  r1 = 7;
+  r2 = 8;
+  r3 = 9;
+  r4 = 2;
+  r5 = 1;
+  r6 = 5;
+  r7 = 3;
+  
+  a0 = 2;
+  a1 = 9;
+  a2 = 1;
+  a3 = 3;
+  a4 = 6;
+  a5 = 8;
+  a6 = 9;
+  a7 = 4;
+  }
+  
+  sfg reini
+  {
+  i = 1;
+  }
+  
+  sfg noth
+  {
+  
+  }
+  
+
+  sfg printresult
+     {    
+     $display("============Final============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);
+     
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);
+     }
+     
+    sfg inci {
+     i = i+ 1;
+     }
+     
+     sfg swap01{
+     hold0 = r0;
+     r0 = r1 ;
+     // r1 = hold0;
+     
+     $display("============swap01============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);  
+     }
+     
+     sfg set1{
+     r1 = hold0;
+     
+     $display("============set1============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);
+     }
+     
+     sfg swap12{
+     hold1 = r1;
+     r1 = r2 ;
+     // r2 = hold1;  
+     
+     $display("============swap12============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);   
+     }
+     
+     
+     
+     sfg set2{
+     r2 = hold1;
+     
+     $display("============set2============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);
+     }
+     
+     sfg swap23{
+     hold2 = r2;
+     r2 = r3 ;
+     //r3 = hold2;
+     
+     $display("============swap23============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);   
+     }
+     
+     sfg set3{
+     r3 = hold2;
+     
+     $display("============set3============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);
+     }
+     
+     sfg swap34{
+     hold3 = r3;
+     r3 = r4 ;
+     //r4 = hold3;
+     
+     $display("============swap34============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);   
+     }
+     
+     sfg set4{
+     r4 = hold3;
+     
+     $display("============set4============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);
+     }
+     
+     sfg swap45{
+     hold4 = r4;
+     r4 = r5 ;
+     //r5 = hold4;
+     
+     $display("============swap45============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);   
+     }
+     
+     sfg set5{
+     r5 = hold4;
+     
+     $display("============set5============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);
+     }
+     
+     sfg swap56{
+     hold5 = r5;
+     r5 = r6 ;
+     //r6 = hold5;
+     
+     $display("============swap56============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);  
+     }
+     
+     sfg set6{
+     r6 = hold5;
+     
+     $display("============set6============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);
+     }
+     
+     sfg swap67{
+     hold6 = r6;
+     r6 = r7 ;
+     //r7 = hold6;
+     
+     $display("============swap67============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);
+     }
+     
+     sfg set7{
+     r7 = hold6;
+     
+     $display("============set7============");
+     $display("r0 = ", r0);
+     $display("r1 = ", r1);
+     $display("r2 = ", r2);
+     $display("r3 = ", r3);
+     $display("r4 = ", r4);
+     $display("r5 = ", r5);
+     $display("r6 = ", r6);
+     $display("r7 = ", r7);
+     }
+     
+     
+     
+       sfg swaap01{
+     huld0 = a0;
+     a0 = a1 ;
+     // a1 = huld0;
+     
+     $display("============swaap01============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);  
+     }
+     
+     sfg seet1{
+     a1 = huld0;
+     
+     $display("============seet1============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);
+     }
+     
+     sfg swaap12{
+     huld1 = a1;
+     a1 = a2 ;
+     // a2 = huld1;  
+     
+     $display("============swaap12============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);   
+     }
+     
+     
+     
+     sfg seet2{
+     a2 = huld1;
+     
+     $display("============seet2============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);
+     }
+     
+     sfg swaap23{
+     huld2 = a2;
+     a2 = a3 ;
+     //a3 = huld2;
+     
+     $display("============swaap23============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);   
+     }
+     
+     sfg seet3{
+     a3 = huld2;
+     
+     $display("============seet3============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);
+     }
+     
+     sfg swaap34{
+     huld3 = a3;
+     a3 = a4 ;
+     //a4 = huld3;
+     
+     $display("============swaap34============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);   
+     }
+     
+     sfg seet4{
+     a4 = huld3;
+     
+     $display("============seet4============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);
+     }
+     
+     sfg swaap45{
+     huld4 = a4;
+     a4 = a5 ;
+     //a5 = huld4;
+     
+     $display("============swaap45============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);   
+     }
+     
+     sfg seet5{
+     a5 = huld4;
+     
+     $display("============seet5============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);
+     }
+     
+     sfg swaap56{
+     huld5 = a5;
+     a5 = a6 ;
+     //a6 = huld5;
+     
+     $display("============swaap56============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);  
+     }
+     
+     sfg seet6{
+     a6 = huld5;
+     
+     $display("============seet6============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);
+     }
+     
+     sfg swaap67{
+     huld6 = a6;
+     a6 = a7 ;
+     //a7 = huld6;
+     
+     $display("============swaap67============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);
+     }
+     
+     sfg seet7{
+     a7 = huld6;
+     
+     $display("============seet7============");
+     $display("a0 = ", a0);
+     $display("a1 = ", a1);
+     $display("a2 = ", a2);
+     $display("a3 = ", a3);
+     $display("a4 = ", a4);
+     $display("a5 = ", a5);
+     $display("a6 = ", a6);
+     $display("a7 = ", a7);
+     }
+   
+
+  use my8051;
+  use my8051_input(data);
+  use mys8051_input(datas);
+}
+fsm sort(sys)
+{
+	initial s0;
+	
+	state  s1, s2, s3, s4, s5, s6, s7, s8, s9,s10,
+	      s11,s12,s13,s14,s15,s16,s17,s18,s19,s20,
+	      s21,s22,s23,s24,s25,s26,s27,s28,s29,s30,
+	      s31,s32,s33,s34,s35,s36,s37,s38,s39,s40,
+	      s41,s42,s43,s44,s45,s46,s47,s48,s49,s50,
+	      s51,s52,s53,s54,s55,s56,s57,s58,s59,s60,
+	      s61,s62,s63,s64,s65,s66,s67,s68,s69,s70,
+	      s71,s72,s73,s74,s75,s76,s77,s78,s79,s80,
+	      s81,s82,s83,s84,s85,s86,s87,s88,s89,s90,
+              s91,s92,s93,s94,s95,s96,s97,s98,s99,s100,
+              s101,s102,s103,s104,s105,s106,s107,s108,s109,s110,
+              s111,s112,s113,s114,s115,s116,s117,s118,s119,s120,
+              s121,s122,s123,s124,s125,s126,s127,s128,s129,s130,
+              s131,s132,s133,s134,s135,s136,s137,s138,s139,s140,
+              s141,s142,s143,s144,s145,s146,s147;
+
+        
+        @s0 init -> s1;
+	
+	@s1 if (r0>r1) then noth ->s2;
+	else swap01 ->s9;
+	//
+	@s9 set1 ->s2 ;
+	
+	
+	@s2 if (r1>r2) then noth ->s3;
+	else swap12 ->s10;
+	//
+	@s10 set2 ->s3 ;
+	
+	
+	@s3 if((r0>r1) & (r2>r3)) then noth ->s4;
+	else if((r1>r0) & (r2>r3)) then swap01 ->s11;
+	else if((r1>r0) & (r2>r3)) then swap23 -> s12;
+	else (swap01,swap23) -> s13 ;
+	//
+	@s11 set1 ->s4 ;
+	@s12 set3 ->s4 ;
+	@s13 (set1,set3) ->s4 ;
+	
+	
+	@s4 if((r1>r2) & (r3>r4)) then noth ->s5;
+	else if((r2>r1) & (r3>r4)) then swap12 ->s14;
+	else if((r1>r2) & (r4>r3)) then swap34 -> s15;
+	else (swap12,swap34) -> s16 ;
+	//
+	@s14 set2 ->s5 ;
+	@s15 set4 ->s5 ;
+	@s16 (set2,set4) ->s5 ;
+	
+	
+	@s5 if((r0>r1) & (r2>r3) & (r4>r5)) then noth ->s6;
+	else if((r0>r1) & (r2>r3) & (r5>r4)) then swap45 ->s17;
+	else if((r0>r1) & (r3>r2) & (r4>r5)) then swap23 -> s18;
+	else if((r0>r1) & (r3>r2) & (r5>r4)) then (swap45,swap23) -> s19;
+	else if((r1>r0) & (r2>r3) & (r4>r5)) then swap01 -> s20;
+	else if((r1>r0) & (r2>r3) & (r5>r4)) then (swap45,swap01) -> s21;
+	else if((r1>r0) & (r3>r2) & (r4>r5)) then (swap01,swap23) -> s22;
+	else (swap01,swap23,swap45) -> s23 ;
+	//
+	@s17 set5 ->s6 ;
+	@s18 set3 ->s6 ;
+	@s19 (set5,set3) ->s6 ;
+	@s20 set1 ->s6 ;
+	@s21 (set5,set1) ->s6 ;
+	@s22 (set1,set3) ->s6 ;
+	@s23 (set1,set3,set5) ->s6 ;
+	
+	
+	@s6  if((r1>r2) & (r3>r4) & (r5>r6)) then noth ->s7;
+	else if((r1>r2) & (r3>r4) & (r6>r5)) then swap56 ->s24;
+	else if((r1>r2) & (r4>r3) & (r5>r6)) then swap34 -> s25;
+	else if((r1>r2) & (r4>r3) & (r6>r5)) then (swap56,swap34) -> s26;
+	else if((r2>r1) & (r3>r4) & (r5>r6)) then swap12 -> s27;
+	else if((r2>r1) & (r3>r4) & (r6>r5)) then (swap56,swap12) -> s28;
+	else if((r2>r1) & (r4>r3) & (r5>r6)) then (swap34,swap12) -> s29;
+	else (swap56,swap34,swap12) -> s30 ;
+	//
+	@s24 set6 ->s7 ;
+	@s25 set4 ->s7 ;
+	@s26 (set6,set4) ->s7 ;
+	@s27 set2 ->s7 ;
+	@s28 (set6,set2) ->s7 ;
+	@s29 (set2,set4) ->s7 ;
+	@s30 (set2,set4,set6) ->s7 ;
+	
+	
+	@s7  if((r0>r1) & (r2>r3) & (r4>r5) & (r6>r7)) then noth ->s47;
+	else if((r0>r1) & (r2>r3) & (r4>r5) & (r7>r6)) then swap67 ->s31;
+	else if((r0>r1) & (r2>r3) & (r5>r4) & (r6>r7)) then swap45 -> s32;
+	else if((r0>r1) & (r2>r3) & (r5>r4) & (r7>r6)) then (swap45,swap67) -> s33;
+	else if((r0>r1) & (r3>r2) & (r4>r5) & (r6>r7)) then swap23 -> s34;
+	else if((r0>r1) & (r3>r2) & (r4>r5) & (r7>r6)) then (swap23,swap67) -> s35;
+	else if((r0>r1) & (r3>r2) & (r5>r4) & (r6>r7)) then (swap45,swap23) -> s36;
+	else if((r0>r1) & (r3>r2) & (r5>r4) & (r7>r6)) then (swap67,swap45,swap23) -> s37;
+	else if((r1>r0) & (r2>r3) & (r4>r5) & (r6>r7)) then swap01 ->s38;
+	else if((r1>r0) & (r2>r3) & (r4>r5) & (r7>r6)) then (swap01,swap67) ->s39;
+	else if((r1>r0) & (r2>r3) & (r5>r4) & (r6>r7)) then (swap01,swap45) -> s40;
+	else if((r1>r0) & (r3>r2) & (r4>r5) & (r6>r7)) then (swap01,swap45,swap67) -> s41;
+	else if((r1>r0) & (r3>r2) & (r4>r5) & (r7>r6)) then (swap01,swap23) -> s42;
+	else if((r1>r0) & (r3>r2) & (r5>r4) & (r6>r7)) then (swap01,swap23,swap67) -> s43;
+	else if((r1>r0) & (r3>r2) & (r5>r4) & (r7>r6)) then (swap01,swap45,swap23) -> s44;
+	else (swap01,swap67,swap45,swap23) -> s45 ;
+	//
+	@s31 set7 ->s47 ;
+	@s32 set5 ->s47 ;
+	@s33 (set7,set5) ->s47 ;
+	@s34 set3 ->s47 ;
+	@s35 (set3,set7) ->s47 ;
+	@s36 (set5,set3) ->s47 ;
+	@s37 (set7,set5,set3) ->s47 ;
+	@s38  set1 ->s47 ;
+	@s39 (set1,set7) ->s47 ;
+	@s40 (set1,set5) ->s47 ;
+	@s41 (set1,set5,set7) ->s47 ;
+	@s42 (set1,set3) ->s47 ;
+	@s43 (set1,set3,set6) ->s47 ;
+	@s44 (set1,set5,set3) ->s47 ;
+	@s45 (set1,set7,set5,set3) ->s47 ;
+	
+	
+	@s47  if((r1>r2) & (r3>r4) & (r5>r6)) then noth ->s55;
+	else if((r1>r2) & (r3>r4) & (r6>r5)) then swap56 ->s48;
+	else if((r1>r2) & (r4>r3) & (r5>r6)) then swap34 -> s49;
+	else if((r1>r2) & (r4>r3) & (r6>r5)) then (swap56,swap34) -> s50;
+	else if((r2>r1) & (r3>r4) & (r5>r6)) then swap12 -> s51;
+	else if((r2>r1) & (r3>r4) & (r6>r5)) then (swap56,swap12) -> s52;
+	else if((r2>r1) & (r4>r3) & (r5>r6)) then (swap34,swap12) -> s53;
+	else (swap56,swap34,swap12) -> s54 ;
+	//
+	@s48 set6 ->s55 ;
+	@s49 set4 ->s55 ;
+	@s50 (set6,set4) ->s55 ;
+	@s51 set2 ->s55 ;
+	@s52 (set6,set2) ->s55 ;
+	@s53 (set2,set4) ->s55 ;
+	@s54 (set2,set4,set6) ->s55 ;
+	
+	
+	@s55 if((r0>r1) & (r2>r3) & (r4>r5)) then noth ->s63;
+	else if((r0>r1) & (r2>r3) & (r5>r4)) then swap45 ->s56;
+	else if((r0>r1) & (r3>r2) & (r4>r5)) then swap23 -> s57;
+	else if((r0>r1) & (r3>r2) & (r5>r4)) then (swap45,swap23) -> s58;
+	else if((r1>r0) & (r2>r3) & (r4>r5)) then swap01 -> s59;
+	else if((r1>r0) & (r2>r3) & (r5>r4)) then (swap45,swap01) -> s60;
+	else if((r1>r0) & (r3>r2) & (r4>r5)) then (swap01,swap23) -> s61;
+	else (swap01,swap23,swap45) -> s62 ;
+	//
+	@s56 set5 ->s63 ;
+	@s57 set3 ->s63 ;
+	@s58 (set5,set3) ->s63 ;
+	@s59 set1 ->s63 ;
+	@s60 (set5,set1) ->s63 ;
+	@s61 (set1,set3) ->s63 ;
+	@s62 (set1,set3,set5) ->s63 ;
+	
+	
+	@s63 if((r1>r2) & (r3>r4)) then noth ->s67;
+	else if((r2>r1) & (r3>r4)) then swap12 ->s64;
+	else if((r1>r2) & (r4>r3)) then swap34 -> s65;
+	else (swap12,swap34) -> s66 ;
+	//
+	@s64 set2 ->s67 ;
+	@s65 set4 ->s67 ;
+	@s66 (set2,set4) ->s67 ;
+	
+	
+	@s67 if((r0>r1) & (r2>r3)) then noth ->s71;
+	else if((r1>r0) & (r2>r3)) then swap01 ->s68;
+	else if((r1>r0) & (r2>r3)) then swap23 -> s69;
+	else (swap01,swap23) -> s70 ;
+	//
+	@s68 set1 ->s71 ;
+	@s69 set3 ->s71 ;
+	@s70 (set1,set3) ->s71;
+	
+	
+	@s71 if (r1>r2) then noth ->s73;
+	else swap12 ->s72;
+	//
+	@s72 set2 ->s73 ;
+	
+	@s73 if (r0>r1) then noth ->s75;
+	else swap01 ->s74;
+	//
+	@s74 set1 ->s75 ;
+	
+	
+	
+	//////////////////////////////////////////
+	//////////////////////////////////////////
+	
+	@s75 reini -> s76 ;
+	
+	/////////////////////////////////////////
+	/////////////////////////////////////////
+	
+	
+	
+	@s76 if (a0>a1) then noth ->s77;
+	else swaap01 ->s78;
+	//
+	@s78 seet1 ->s77 ;
+	
+	
+	@s77 if (a1>a2) then noth ->s79;
+	else swaap12 ->s80;
+	//
+	@s80 seet2 ->s79 ;
+	
+	
+	@s79 if((a0>r1) & (a2>a3)) then noth ->s81;
+	else if((a1>a0) & (a2>a3)) then swaap01 ->s82;
+	else if((a1>a0) & (a2>a3)) then swaap23 -> s83;
+	else (swaap01,swaap23) -> s84 ;
+	//
+	@s82 seet1 ->s81 ;
+	@s83 seet3 ->s81 ;
+	@s84 (seet1,seet3) ->s81 ;
+	
+	
+	@s81 if((a1>a2) & (a3>a4)) then noth ->s85;
+	else if((a2>a1) & (a3>a4)) then swaap12 ->s142;
+	else if((a1>a2) & (a4>a3)) then swaap34 -> s143;
+	else (swaap12,swaap34) -> s144 ;
+	//
+	@s142 seet2 ->s85 ;
+	@s143 seet4 ->s85 ;
+	@s144 (seet2,seet4) ->s85 ;
+	
+	
+	@s85 if((a0>a1) & (a2>a3) & (a4>a5)) then noth ->s86;
+	else if((a0>a1) & (a2>a3) & (a5>a4)) then swaap45 ->s87;
+	else if((a0>a1) & (a3>a2) & (a4>a5)) then swaap23 -> s88;
+	else if((a0>a1) & (a3>a2) & (a5>a4)) then (swaap45,swaap23) -> s89;
+	else if((a1>a0) & (a2>a3) & (a4>a5)) then swaap01 -> s90;
+	else if((a1>a0) & (a2>a3) & (a5>a4)) then (swaap45,swaap01) -> s91;
+	else if((a1>a0) & (a3>a2) & (a4>a5)) then (swaap01,swaap23) -> s92;
+	else (swaap01,swaap23,swaap45) -> s93 ;
+	//
+	@s87 seet5 ->s86 ;
+	@s88 seet3 ->s86 ;
+	@s89 (seet5,seet3) ->s86 ;
+	@s90 seet1 ->s86 ;
+	@s91 (seet5,seet1) ->s86 ;
+	@s92 (seet1,seet3) ->s86 ;
+	@s93 (seet1,seet3,seet5) ->s86 ;
+	
+	
+	@s86  if((a1>a2) & (a3>a4) & (a5>a6)) then noth ->s94;
+	else if((a1>a2) & (a3>a4) & (a6>a5)) then swaap56 ->s95;
+	else if((a1>a2) & (a4>a3) & (a5>a6)) then swaap34 -> s96;
+	else if((a1>a2) & (a4>a3) & (a6>a5)) then (swaap56,swaap34) -> s97;
+	else if((a2>a1) & (a3>a4) & (a5>a6)) then swaap12 -> s98;
+	else if((a2>a1) & (a3>a4) & (a6>a5)) then (swaap56,swaap12) -> s99;
+	else if((a2>a1) & (a4>a3) & (a5>a6)) then (swaap34,swaap12) -> s100;
+	else (swaap56,swaap34,swaap12) -> s101 ;
+	//
+	@s95 seet6 ->s94 ;
+	@s96 seet4 ->s94 ;
+	@s97 (seet6,seet4) ->s94 ;
+	@s98 seet2 ->s94 ;
+	@s99 (seet6,seet2) ->s94 ;
+	@s100 (seet2,seet4) ->s94 ;
+	@s101 (seet2,seet4,seet6) ->s94 ;
+	
+	
+	@s94  if((a0>a1) & (a2>a3) & (a4>r5) & (a6>a7)) then noth ->s102;
+	else if((a0>a1) & (a2>a3) & (a4>a5) & (a7>a6)) then swaap67 ->s103;
+	else if((a0>a1) & (a2>a3) & (a5>a4) & (a6>a7)) then swaap45 -> s104;
+	else if((a0>a1) & (a2>a3) & (a5>a4) & (a7>a6)) then (swaap45,swaap67) -> s105;
+	else if((a0>a1) & (a3>a2) & (a4>a5) & (a6>a7)) then swaap23 -> s106;
+	else if((a0>a1) & (a3>a2) & (a4>a5) & (a7>a6)) then (swaap23,swaap67) -> s107;
+	else if((a0>a1) & (a3>a2) & (a5>a4) & (a6>a7)) then (swaap45,swaap23) -> s108;
+	else if((a0>a1) & (a3>a2) & (a5>a4) & (a7>a6)) then (swaap67,swaap45,swaap23) -> s109;
+	else if((a1>a0) & (a2>a3) & (a4>a5) & (a6>a7)) then swaap01 ->s110;
+	else if((a1>a0) & (a2>a3) & (a4>a5) & (a7>a6)) then (swaap01,swaap67) ->s111;
+	else if((a1>a0) & (a2>a3) & (a5>a4) & (a6>a7)) then (swaap01,swaap45) -> s112;
+	else if((a1>a0) & (a3>a2) & (a4>a5) & (a6>a7)) then (swaap01,swaap45,swaap67) -> s113;
+	else if((a1>a0) & (a3>a2) & (a4>a5) & (a7>a6)) then (swaap01,swaap23) -> s114;
+	else if((a1>a0) & (a3>a2) & (a5>a4) & (a6>a7)) then (swaap01,swaap23,swaap67) -> s115;
+	else if((a1>a0) & (a3>a2) & (a5>a4) & (a7>a6)) then (swaap01,swaap45,swaap23) -> s116;
+	else (swaap01,swaap67,swaap45,swaap23) -> s117 ;
+	//
+	@s103 seet7 ->s102 ;
+	@s104 seet5 ->s102 ;
+	@s105 (seet7,seet5) ->s102 ;
+	@s106 seet3 ->s102 ;
+	@s107 (seet3,seet7) ->s102 ;
+	@s108 (set5,seet3) ->s102 ;
+	@s109 (seet7,seet5,seet3) ->s102 ;
+	@s110  seet1 ->s102 ;
+	@s111 (seet1,seet7) ->s102 ;
+	@s112 (seet1,seet5) ->s102 ;
+	@s113 (seet1,seet5,seet7) ->s102 ;
+	@s114 (seet1,seet3) ->s102 ;
+	@s115 (seet1,seet3,seet6) ->s102 ;
+	@s116 (seet1,seet5,seet3) ->s102 ;
+	@s117 (seet1,seet7,seet5,seet3) ->s102 ;
+	
+	
+	@s102  if((a1>a2) & (a3>a4) & (a5>a6)) then noth ->s118;
+	else if((a1>a2) & (a3>a4) & (a6>a5)) then swaap56 ->s119;
+	else if((a1>a2) & (a4>a3) & (a5>a6)) then swaap34 -> s120;
+	else if((a1>a2) & (a4>a3) & (a6>a5)) then (swaap56,swaap34) -> s121;
+	else if((a2>a1) & (a3>a4) & (a5>a6)) then swaap12 -> s122;
+	else if((a2>a1) & (a3>a4) & (a6>a5)) then (swaap56,swaap12) -> s123;
+	else if((a2>a1) & (a4>a3) & (a5>a6)) then (swaap34,swaap12) -> s124;
+	else (swaap56,swaap34,swaap12) -> s125 ;
+	//
+	@s119 seet6 ->s118 ;
+	@s120 seet4 ->s118 ;
+	@s121 (seet6,seet4) ->s118 ;
+	@s122 seet2 ->s118 ;
+	@s123 (seet6,seet2) ->s118 ;
+	@s124 (seet2,set4) ->s118 ;
+	@s125 (seet2,seet4,seet6) ->s118 ;
+	
+	
+	@s118 if((a0>a1) & (a2>r3) & (a4>a5)) then noth ->s126;
+	else if((a0>a1) & (a2>a3) & (a5>a4)) then swaap45 ->s127;
+	else if((a0>a1) & (a3>a2) & (a4>a5)) then swaap23 -> s128;
+	else if((a0>a1) & (a3>a2) & (a5>a4)) then (swaap45,swaap23) -> s129;
+	else if((a1>a0) & (a2>a3) & (a4>a5)) then swaap01 -> s130;
+	else if((a1>a0) & (a2>a3) & (a5>a4)) then (swaap45,swaap01) -> s131;
+	else if((a1>a0) & (a3>a2) & (a4>a5)) then (swaap01,swaap23) -> s132;
+	else (swaap01,swaap23,swaap45) -> s133 ;
+	//
+	@s127 seet5 ->s126 ;
+	@s128 seet3 ->s126 ;
+	@s129 (seet5,seet3) ->s126 ;
+	@s130 seet1 ->s126 ;
+	@s131 (seet5,set1) ->s126 ;
+	@s132 (set1,set3) ->s126 ;
+	@s133 (set1,set3,set5) ->s126 ;
+	
+	
+	@s126 if((a1>a2) & (a3>a4)) then noth ->s134;
+	else if((a2>a1) & (a3>a4)) then swaap12 ->s135;
+	else if((a1>a2) & (a4>a3)) then swaap34 -> s136;
+	else (swaap12,swaap34) -> s137 ;
+	//
+	@s135 seet2 ->s134 ;
+	@s136 seet4 ->s134 ;
+	@s137 (seet2,seet4) ->s134 ;
+	
+	
+	@s134 if((a0>a1) & (a2>a3)) then noth ->s138;
+	else if((a1>a0) & (a2>a3)) then swaap01 ->s139;
+	else if((a0>a1) & (a3>a2)) then swaap23 -> s140;
+	else (swaap01,swaap23) -> s141 ;
+	//
+	@s139 seet1 ->s138 ;
+	@s140 seet3 ->s138 ;
+	@s141 (seet1,seet3) ->s138;
+	
+	
+	@s138 if (a1>a2) then noth ->s145;
+	else swaap12 ->s146;
+	//
+	@s146 seet2 ->s145 ;
+	
+	
+	@s145 if (a0>a1) then noth ->s8;
+	else swaap01 ->s147;
+	//
+	@s147 seet1 ->s8 ;
+	
+	
+	@s8 printresult -> s46;
+	
+	@s46 noth -> s46;
+}
+
+system S {sys;}
